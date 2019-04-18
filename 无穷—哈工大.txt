@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+LL a[50],b[50];
+const LL maxn=1e18;
+void init(){
+    a[1] = 0, a[2] = 10;
+    for(int i = 3; i <= 20; i++) a[i] = a[i-1]*10;
+    b[1] = 9;
+    for(int i = 2; i <= 19; i++) b[i] = (a[i+1] - a[i])*i;
+}
+void  _find(LL n)
+{
+    if(n<=9)
+    {
+        printf("%d\n",n);
+        return ;
+    }
+    else
+    {
+        LL tmp = n, len = 1;
+        while(1){
+            if(tmp - b[len] <= 0) break;
+            tmp -= b[len];
+            len++;
+        }
+        LL  x = tmp/len, y = tmp%len;
+        if(y == 0)
+        {
+            x--, y = len;
+        }
+        y = len-y+1;
+        LL  m = a[len] + x;
+        while(y){
+            y--;
+            if(y == 0)
+            {
+                 printf("%d\n", m%10);
+                 return ;
+            }
+            m /= 10;
+        }
+    }
+}
+int main(){
+    init();
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        LL q;
+        scanf("%lld", &q);
+        _find(q);
+    }
+    return 0;
+}
