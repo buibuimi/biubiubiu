@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int maxn=1e5+10;
+
+typedef long long LL;
+
+int a[maxn];
+
+int main()
+
+{
+  
+     int n,k;
+  
+     cin>>n>>k;
+  
+     cin>>a[0];
+  
+     LL nim=a[0];
+  
+    for(int i=1;i<n;i++)
+  
+    {
+    
+          cin>>a[i];
+    
+          nim=nim^a[i];
+ 
+    }
+  
+         if(nim==0)
+                cout<<"NO"<<endl;
+  
+         else 
+                cout<<"YES"<<endl;
+  
+         return 0;
+
+}
