@@ -1,0 +1,53 @@
+#include<stdio.h>
+
+int main()
+
+{
+
+    int i ,na,nb,n,ahan[100] ,ahua[100] ,bhan[101] ,bhua[100] , counta= 0 , countb = 0;
+
+    scanf("%d%d",&na,&nb);
+
+    scanf("%d",&n) ;
+
+    for( i = 0 ; i < n ; i ++ )
+
+        scanf("%d%d%d%d",&ahan[i],&ahua[i],&bhan[i],&bhua[i]);
+
+    for(i=0;i<n;i++)
+
+    {
+
+        if((ahua[i] == (ahan[i] + bhan[i]) )&& (bhua[i] == (bhan[i] + bhan[i])))
+
+            continue ;
+
+        if( ahua[i] == (ahan[i] + bhan[i]) )
+
+        {
+
+            counta ++ ; na -- ;
+
+            if(na < 0 )
+
+            {printf("A\n%d\n",countb); break ;}
+
+        }
+
+        else if (bhua[i] == (ahan[i] + bhan[i]))
+
+        {
+
+            countb ++ ; nb -- ;
+
+            if(nb < 0 )
+
+            {printf("B\n%d\n",counta); break ;}
+
+        }
+
+    }
+
+    return 0;
+
+}
