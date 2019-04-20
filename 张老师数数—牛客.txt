@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+string str[100]={"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
+int  num[100]={1,4,5,9,10,40,50,90,100,400,500,900,1000};
+int main()
+{
+  int n;
+  cin>>n;
+  for(int i=12;i>=0;i--)
+  {
+    while(n>=num[i])
+    {
+      cout<<str[i];
+      n-=num[i];
+    }
+    if(n==0)break;
+  }
+  cout<<endl;
+  return 0;
+}
