@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define LL long long
+using namespace std;
+
+const int NN=502;
+int mp[NN][NN];
+int ma[NN][NN],mi[NN][NN];
+int n,m,g;
+
+int main(){
+	scanf("%d%d%d",&n,&m,&g);
+	for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            scanf("%d",&mp[i][j]);
+            ma[i][j]=mi[i][j]=mp[i][j];
+        }
+	}
+	int l=2,resl=1;
+	while(l<=min(m,n))
+    {
+        int flag=0;
+        for(int i=0;i+l<=n;i++)
+        {
+            for(int j=0;j+l<=m;j++)
+            {
+                int mmax=max(ma[i][j],ma[i][j+1]);
+                mmax=max(mmax,ma[i+1][j]);
+                mmax=max(mmax,ma[i+1][j+1]);
+
+                int mmin=min(mi[i][j],mi[i][j+1]);
+                mmin=min(mmin,mi[i+1][j]);
+                mmin=min(mmin,mi[i+1][j+1]);
+
+                ma[i][j]=mmax;
+                mi[i][j]=mmin;
+                if(ma[i][j]-mi[i][j]<=g){
+                    resl=l;
+                    flag=1;
+                }
+            }
+        }
+        if(flag==0){
+            break;
+        }
+        else{
+            l++;
+        }
+    }
+    printf("%d\n",resl);
+	return 0;
+}
