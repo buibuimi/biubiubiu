@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+  int n;
+  string str;
+  cin>>n;
+  getchar ();
+  cin>>str;
+  int l=0,r=0,flag=0;
+  char ans=str[0];
+  for(int i=0;i<n;i++)
+  {
+    if(str[i]<ans)
+    {
+      flag=1;
+      r=i+1;
+      break;
+    }
+    else
+    {
+      ans=str[i];
+      l=i+1;
+    }
+  }
+  if(flag)
+  {
+    cout<<"YES"<<endl;
+    cout<<l<<" "<<r<<endl;
+  }
+  else
+  cout<<"NO"<<endl;
+  return 0;
+}
