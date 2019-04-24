@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+const LL maxn=1e4+10;
+LL l,r;
+int prime[maxn],vis[maxn],pos;
+void prime_pre()
+{
+  for(int i=2;i<maxn;i++)
+  {
+  if(!vis[i])
+  {
+    prime[pos++]=i;
+  }
+  for(int j=0;j<pos&&i*prime[j]<maxn;j++)
+  {
+    vis[prime[j]*i]=1;
+    if(i%prime[j]==0)break;
+  }
+  }
+}
+int main()
+{
+  int n,x;
+  scanf("%d",&n);
+  prime_pre();
+  while(n--)
+  {
+    scanf("%d",&x);
+    if(x<=2)
+    {
+      printf("%d %d\n",x,2-x);
+    }
+    else {
+    int p=lower_bound(prime,prime+pos,x)-prime;
+    printf("%d %d\n",x,min(prime[p]-x,x-prime[p-1]));
+  }
+  }
+  return 0;
+}
