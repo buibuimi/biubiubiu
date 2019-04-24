@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int maxn=1e5+50;
+int l[maxn],r[maxn],x,ans;
+int main()
+{
+  int n,m;
+  scanf("%d %d",&n,&m);
+  for(int i=1;i<=n;i++)
+  {
+    scanf("%d",&x);
+    if(!l[x])
+    {
+      l[x]=i;
+    }
+    r[x]=i;
+  }
+  for(int i=m;i>=1;i--)
+  {
+    if(l[i])
+    {
+      ans=l[i];
+      break;
+    }
+  }
+  for(int i=1;i<=m;i++)
+  {
+    if(l[i])printf("%d %d\n",l[i],r[i]);
+    else printf("%d %d\n",ans,ans);
+  }
+  return 0;
+}
+//¿¨½áÎ²»»ÐÐ
