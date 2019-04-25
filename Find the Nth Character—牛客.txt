@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+  int k,n,t,num;
+  cin>>k;
+  while(k--)
+  {
+    cin>>n;
+    for(int i=1;i<=10000;i++)
+    {
+      if(n>i)n-=i;
+      else break;
+    }
+    --n;
+    n%=26;
+    char str='a'+n;
+    cout<<str<<endl;
+  }
+  return 0;
+}
