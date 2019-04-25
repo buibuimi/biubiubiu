@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+const int maxn=5e4+10;
+LL a[maxn],num[maxn],val=0;
+int main()
+{
+  int t,n,x;
+  scanf("%d",&t);
+  while(t--)
+  {
+    scanf("%d",&n);
+    x=n-1;
+    val=0;
+    for(int i=1;i<=n;i++)
+    {
+      scanf("%lld",&a[i]);
+      val+=a[i]*a[i]*x;
+      num[i]=num[i-1]+a[i];
+    }
+    for(int i=1;i<n;i++)
+    {
+      val-=2*a[i]*(num[n]-num[i]);
+    }
+    printf("%lld\n",val);
+  }
+  return 0;
+}
