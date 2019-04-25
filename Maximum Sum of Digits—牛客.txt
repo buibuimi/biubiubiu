@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 0x3f3f3f3f
+typedef long long LL;
+int main()
+{
+  int t;
+  LL n;
+  scanf("%d",&t);
+  while(t--)
+  {
+    scanf("%lld",&n);
+    LL x=0,ans=0;
+    while(x*10+9<n)
+    {
+      x=x*10+9;
+      ans+=9;
+    }
+    LL y=n-x;
+    while(y>0)
+    {
+      ans+=y%10;
+      y/=10;
+    }
+    printf("%lld\n",ans);
+  }
+  return 0;
+}
