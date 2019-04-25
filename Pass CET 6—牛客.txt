@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+const int maxn=1e5+10;
+int r[maxn],c[maxn];
+int main()
+{
+  int n,m,t,x,y;
+  scanf("%d %d %d",&n,&m,&t);
+  for(int i=1;i<=t;i++)
+  {
+    scanf("%d %d",&x,&y);
+    if(x==1)
+    {
+      r[y]=i;
+    }
+    else
+    {
+      c[y]=i;
+    }
+  }
+  /*for(int i=1;i<=n;i++)
+  {
+    cout<<r[i]<<endl;
+  }
+  cout<<endl;
+  for(int i=1;i<=m;i++)
+  {
+    cout<<c[i]<<endl;
+  }*/
+  for(int i=1;i<=n;i++)
+  {
+    for(int j=1;j<=m;j++)
+    {
+      printf("%d ",max(r[i],c[j]));
+    }
+    printf("\n");
+  }
+  return 0;
+}
