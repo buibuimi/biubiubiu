@@ -1,0 +1,54 @@
+#include <iostream>
+#include <map>
+using namespace std;
+typedef long long LL;
+map <LL , int> M ;
+int n ;
+LL res = 1 ;
+const int maxn = 1e5 + 10 ;
+char Ma[maxn << 1] ;
+int Mp[maxn << 1] ;
+void Manacher(string s , int len)
+{
+    int l = 0 ;
+    Ma[l++] = '$' ;
+    Ma[l++] = '#' ;
+    for (int i = 0 ; i < len ; ++i)
+    {
+        Ma[l++] = s[i] ;
+        Ma[l++] = '#' ;
+    }
+    Ma[l] = 0 ;
+    int mx = 0 , id = 0 ;
+    for (int i = 0 ; i < l ; ++i)
+    {
+        Mp[i] = mx > i ? min (Mp[2 * id - i] , mx - i) : 1 ;
+        while (Ma[i + Mp[i]] == Ma[i - Mp[i]])
+            ++Mp[i] ;
+        if (i + Mp[i] > mx)
+        {
+            mx = i + Mp[i] ;
+            id = i ;
+        }
+    }
+}
+int main ()
+{
+    scanf ("%lld" , &n) ;
+    M[n] = 1 ;
+    while (1)
+    {
+        ++n ;
+        while (n%10==0)
+        {
+            n/=10;
+        }
+        if (M[n])
+        {
+            break ;
+        }
+        ++M[n] ;
+        ++res ;
+    }
+    printf("%lld\n" , res) ;
+}
