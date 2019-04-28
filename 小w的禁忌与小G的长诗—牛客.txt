@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int mod = 1e9 + 7;
+int qpow(int x, int n) {
+    int res = 1;
+    while(n) {
+        if(n & 1) res = 1ll * res * x % mod;
+        x = 1ll * x * x % mod;
+        n >>= 1;
+    }
+    return res;
+}
+int main() {
+    int n; cin >> n;
+    int ans = ((3ll * qpow(25, n) - 3ll * qpow(24, n) + qpow(23, n)) % mod + mod) % mod;
+    cout << ans << endl;
+    return 0;
+}
