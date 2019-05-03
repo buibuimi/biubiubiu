@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+const int maxn=1e5+10;
+int tot=0;
+int trie[maxn][26];
+void insert(string str)//编号，a~z分别用0~25表示(编号二)，然后跟据输入顺序编号（编号一）；
+{
+  int root=0;
+  int len=str.size();
+  for(int i=0;i<len;i++)
+  {
+    int id=str[i]-'A';
+    if(!trie[root][id])
+    {
+      trie[root][id]=++tot;
+    }
+    root=trie[root][id];
+  }
+}
+int main()
+{
+  string s;
+  while(cin>>s)
+  {
+    insert(s);
+  }
+  cout<<tot+1<<endl;
+  return 0;
+}
