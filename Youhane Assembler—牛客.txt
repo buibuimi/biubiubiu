@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+const int maxn=3e5+10;
+string str[maxn];
+int nextt[maxn];
+void kmp_pre(string str , int m )
+{
+    int i , j ;
+    j = nextt[0] = -1 ;
+    i = 0 ;
+    while (i < m)
+    {
+        while (j != -1 && str[i] != str[j])
+            j = nextt[j] ;
+        nextt[++i] = ++j ;
+    }
+}
+int main()
+{
+    int t,x,y,q;
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+      cin>>str[i];
+    }
+    cin>>q;
+    while(q--)
+    {
+      cin>>x>>y;
+      int num=min(str[x].size(),str[y].size());
+      string ans=str[y]+'*'+str[x];
+      int n=ans.size();
+      kmp_pre(ans,n);
+      cout<<nextt[n]<<endl;
+    }
+    return 0;
+}
