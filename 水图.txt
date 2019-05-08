@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define INF 03x3f3f3f3f;
+typedef long long LL;
+const int maxn=5e4+5;
+struct edge
+{
+  int to;
+  LL val;
+}en;
+vector<edge>e[maxn];
+int vis[maxn];
+LL ans=0;
+void dfs(int pos,LL sum)
+{
+  if(sum>ans)ans=sum;
+  for(int i=0;i<e[pos].size();i++)
+  {
+    int j=e[pos][i].to;
+    if(!vis[j])
+    {
+      vis[j]=1;
+      dfs(j,sum+e[pos][i].val);
+    }
+  }
+}
+
+int main()
+{
+  int n,pos,x,y;
+  LL sum=0,v;
+  scanf("%d%d",&n , &pos);
+  for(int i=1;i<n;i++)
+  {
+    scanf("%d %d %lld",&x,&y,&v);
+    sum=sum+v;
+    en.to=x,en.val=v;
+    e[y].push_back(en);
+    en.to=y,en.val=v;
+    e[x].push_back(en);
+  }
+  vis[pos]=1;
+  dfs(pos,0);
+  cout<<2*sum-ans<<endl;
+  return 0;
+}
