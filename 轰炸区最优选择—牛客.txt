@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+typedef long long LL;
+int mapp[55][55];
+int dfs(int x , int y , int k)
+{
+  int ans=0;
+  for(int i=x;i<x+k;i++)
+  {
+    for(int j=y;j<y+k;j++)
+    {
+      ans+=mapp[i][j];
+    }
+  }
+//  cout<<ans<<endl;
+  return ans;
+}
+int main()
+{
+  int n, k ;
+  while(cin>>n >> k ){
+  for(int i=0 ; i < n ; i++)
+  {
+    for(int j = 0 ; j < n ; j++)
+    {
+      cin>>mapp[i][j];
+    }
+  }
+  int sum=0;
+  for(int i = 0 ; i <=n - k ; i ++)
+  {
+    for(int j = 0 ; j <=n-k ; j++)
+    {
+      sum=max(sum,dfs(i,j,k));
+    }
+    //cout<<ans<<endl;
+  }
+  cout<< sum << endl;
+}
+  return 0;
+}
