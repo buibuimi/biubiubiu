@@ -1,0 +1,16 @@
+#include<cstdio>
+using namespace std;
+long long ans;
+int stack[80001],n,a,tot;
+int main()
+{
+    scanf("%d",&n);
+    for (int i=1;i<=n;i++)
+    {
+        scanf("%d",&a);
+        while (a>=stack[tot]&&tot>=1) tot--;
+        stack[++tot]=a;
+        ans+=tot-1;
+    }
+    printf("%lld\n",ans);
+}
